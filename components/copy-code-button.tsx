@@ -36,10 +36,12 @@ export default function CopyCodeButton({ theme }: Props) {
             copy and paste the following code into your CSS file
           </DialogDescription>
         </DialogHeader>
-        <pre className="relative bg-zinc-800 rounded-xl p-4 text-gray-100 max-h-[400px] overflow-y-scroll">
-          <code>{code}</code>
+        <div className="relative">
+          <pre className="relative bg-zinc-800 rounded-xl p-4 text-gray-100 max-h-[400px] overflow-y-scroll">
+            <code>{code}</code>
+          </pre>
           <Button
-            className="absolute top-2 right-2 uppercase bg-accent text-accent-foreground"
+            className="absolute top-3 right-5 uppercase bg-accent text-accent-foreground"
             size="sm"
             variant="ghost"
             onClick={() => navigator.clipboard.writeText(code)}
@@ -47,7 +49,7 @@ export default function CopyCodeButton({ theme }: Props) {
             <CopyIcon />
             copy
           </Button>
-        </pre>
+        </div>
       </DialogContent>
     </Dialog>
   );

@@ -8,10 +8,12 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const transformStateToCssVariables = (state: ThemeState) => {
-  return state.colors.flatMap((color) =>
+  const colorsVariables = state.colors.flatMap((color) =>
     color.variables.map((variable) => [
       `--${variable.name}`,
       hexToHSL(variable.value),
     ])
   );
+
+  return [...colorsVariables, [`--radius`, `${state.radius}rem`]];
 };

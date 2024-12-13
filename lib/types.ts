@@ -9,4 +9,5 @@ export type Color = {
 
 export type ThemeState = {
   colors: Color[];
+  radius: number;
 };

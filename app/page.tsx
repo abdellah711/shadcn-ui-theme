@@ -2,17 +2,25 @@
 import ColorCard from "@/components/color-card";
 import CopyCodeButton from "@/components/copy-code-button";
 import ExamplesTabs from "@/components/examples/examples-tabs";
+import RadiusField from "@/components/radius-field";
 import { initialColors } from "@/lib/constants";
 import { ThemeState } from "@/lib/types";
 import { useState } from "react";
 
 export default function Home() {
-  const [theme, setTheme] = useState<ThemeState>({ colors: initialColors });
+  const [theme, setTheme] = useState<ThemeState>({
+    colors: initialColors,
+    radius: 0.5,
+  });
 
   return (
     <div className="p-12 space-y-5">
       <h1 className="text-3xl">Shadcn Theme Generator</h1>
       <CopyCodeButton theme={theme} />
+      <RadiusField
+        radius={theme.radius}
+        onChange={(value) => setTheme({ ...theme, radius: value })}
+      />
       <div className="flex gap-3 flex-wrap max-w-5xl">
         {theme.colors.map((color) => (
           <ColorCard
