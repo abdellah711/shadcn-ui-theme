@@ -170,3 +170,25 @@ export const initialColors: Color[] = [
     ],
   },
 ];
+
+export const COLORS_VARIABLES = [
+  "background",
+  "foreground",
+  "muted",
+  "muted-foreground",
+  "card",
+  "card-foreground",
+  "popover",
+  "popover-foreground",
+  "primary",
+  "primary-foreground",
+  "secondary",
+  "secondary-foreground",
+  "accent",
+  "accent-foreground",
+  "destructive",
+  "destructive-foreground",
+  "input",
+  "border",
+  "ring",
+];
