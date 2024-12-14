@@ -3,22 +3,23 @@ import { calculateContrast } from "@/lib/colors";
 import ColorInput from "./color-input";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { cn } from "@/lib/utils";
-
-type Color = {
-  name: string;
-  value: string;
-  label: string;
-};
+import { ColorValue } from "@/lib/types";
+import { useTheme } from "next-themes";
 
 type Props = {
   colorName: string;
-  colors: Color[];
-  onChange: (color: Color[]) => void;
+  colors: ColorValue[];
+  onChange: (color: ColorValue[]) => void;
 };
 
 export default function ColorCard({ colorName, colors, onChange }: Props) {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+  const valueAttr = isDark ? "darkValue" : "value";
+
   const contrast =
-    colors.length > 1 && calculateContrast(colors[0].value, colors[1]!.value);
+    colors.length > 1 &&
+    calculateContrast(colors[0][valueAttr], colors[1]![valueAttr]);
   return (
     <div className="bg-muted flex gap-4 p-3 rounded-lg w-fit">
       <div className="flex flex-col justify-center">
@@ -41,11 +42,11 @@ export default function ColorCard({ colorName, colors, onChange }: Props) {
           <Tooltip key={color.name} delayDuration={0}>
             <TooltipTrigger>
               <ColorInput
-                color={color.value}
+                color={color[valueAttr]}
                 onChange={(value) => {
                   onChange(
                     colors.map((c) =>
-                      c.name === color.name ? { ...c, value } : c
+                      c.name === color.name ? { ...c, [valueAttr]: value } : c
                     )
                   );
                 }}

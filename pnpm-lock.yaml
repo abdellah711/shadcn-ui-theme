@@ -65,6 +65,9 @@ dependencies:
   next:
     specifier: 15.0.3
     version: 15.0.3(babel-plugin-react-compiler@19.0.0-beta-df7b47d-20241124)(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106)
+  next-themes:
+    specifier: ^0.4.4
+    version: 0.4.4(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106)
   react:
     specifier: 19.0.0-rc-66855b96-20241106
     version: 19.0.0-rc-66855b96-20241106
@@ -2131,6 +2134,16 @@ packages:
     resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+
+  /next-themes@0.4.4(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106):
+    resolution: {integrity: sha512-LDQ2qIOJF0VnuVrrMSMLrWGjRMkq+0mpgl6e0juCLqdJ+oo8Q84JRWT6Wh11VDQKkMMe+dVzDKLWs5n87T+PkQ==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    dev: false
 
   /next@15.0.3(babel-plugin-react-compiler@19.0.0-beta-df7b47d-20241124)(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106):
     resolution: {integrity: sha512-ontCbCRKJUIoivAdGB34yCaOcPgYXr9AAkV/IwqFfWWTXEPUgLYkSkqBhIk9KK7gGmgjc64B+RdoeIDM13Irnw==}

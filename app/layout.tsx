@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Inter } from "next/font/google";
@@ -12,7 +13,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <TooltipProvider>{children}</TooltipProvider>
+        <TooltipProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+          </ThemeProvider>
+        </TooltipProvider>
       </body>
     </html>
   );

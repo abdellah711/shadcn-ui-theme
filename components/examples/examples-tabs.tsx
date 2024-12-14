@@ -6,12 +6,16 @@ import { DashboardExample } from "./dashboard";
 import { Button } from "../ui/button";
 import { transformStateToCssVariables } from "@/lib/utils";
 import { ThemeState } from "@/lib/types";
+import { useTheme } from "next-themes";
 
 type Props = {
   theme: ThemeState;
 };
 
 export default function ExamplesTabs({ theme }: Props) {
+  const { theme: mode } = useTheme();
+  const isDark = mode === "dark";
+
   return (
     <Tabs defaultValue="cards">
       <TabsList className="py-3">
@@ -34,7 +38,7 @@ export default function ExamplesTabs({ theme }: Props) {
       </TabsList>
 
       <div
-        style={Object.fromEntries(transformStateToCssVariables(theme))}
+        style={Object.fromEntries(transformStateToCssVariables(theme, isDark))}
         className="bg-background border border-border rounded-md origin-top"
       >
         <TabsContent value="cards">
