@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,7 +22,9 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
-export function DemoReportAnIssue() {
+export function CardsReportIssue() {
+  const id = React.useId();
+
   return (
     <Card>
       <CardHeader>
@@ -30,11 +34,11 @@ export function DemoReportAnIssue() {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid gap-4 sm:grid-cols-2">
           <div className="grid gap-2">
-            <Label htmlFor="area">Area</Label>
+            <Label htmlFor={`area-${id}`}>Area</Label>
             <Select defaultValue="billing">
-              <SelectTrigger id="area">
+              <SelectTrigger id={`area-${id}`} aria-label="Area">
                 <SelectValue placeholder="Select" />
               </SelectTrigger>
               <SelectContent>
@@ -47,11 +51,12 @@ export function DemoReportAnIssue() {
             </Select>
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="security-level">Security Level</Label>
+            <Label htmlFor={`security-level-${id}`}>Security Level</Label>
             <Select defaultValue="2">
               <SelectTrigger
-                id="security-level"
-                className="line-clamp-1 w-[160px] truncate"
+                id={`security-level-${id}`}
+                className="line-clamp-1 w-full truncate"
+                aria-label="Security Level"
               >
                 <SelectValue placeholder="Select level" />
               </SelectTrigger>
@@ -65,20 +70,22 @@ export function DemoReportAnIssue() {
           </div>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="subject">Subject</Label>
-          <Input id="subject" placeholder="I need help with..." />
+          <Label htmlFor={`subject-${id}`}>Subject</Label>
+          <Input id={`subject-${id}`} placeholder="I need help with..." />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="description">Description</Label>
+          <Label htmlFor={`description-${id}`}>Description</Label>
           <Textarea
-            id="description"
+            id={`description-${id}`}
             placeholder="Please include all information relevant to your issue."
           />
         </div>
       </CardContent>
       <CardFooter className="justify-between space-x-2">
-        <Button variant="ghost">Cancel</Button>
-        <Button>Submit</Button>
+        <Button variant="ghost" size="sm">
+          Cancel
+        </Button>
+        <Button size="sm">Submit</Button>
       </CardFooter>
     </Card>
   );

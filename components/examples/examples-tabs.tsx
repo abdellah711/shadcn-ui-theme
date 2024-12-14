@@ -19,20 +19,20 @@ export default function ExamplesTabs({ theme }: Props) {
   return (
     <Tabs defaultValue="cards">
       <TabsList className="py-3">
-        <TabsTrigger value="cards" asChild>
-          <Button
-            variant="ghost"
-            className="text-muted-foreground data-[state=active]:text-primary data-[state=active]:font-semibold"
-          >
-            Cards
-          </Button>
-        </TabsTrigger>
         <TabsTrigger value="dashboard" asChild>
           <Button
             variant="ghost"
             className="text-muted-foreground data-[state=active]:text-primary data-[state=active]:font-semibold"
           >
             Dashboard
+          </Button>
+        </TabsTrigger>
+        <TabsTrigger value="cards" asChild>
+          <Button
+            variant="ghost"
+            className="text-muted-foreground data-[state=active]:text-primary data-[state=active]:font-semibold"
+          >
+            Cards
           </Button>
         </TabsTrigger>
       </TabsList>

@@ -19,7 +19,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function DemoPaymentMethod() {
+export function CardsPaymentMethod() {
   return (
     <Card>
       <CardHeader>
@@ -31,10 +31,15 @@ export function DemoPaymentMethod() {
       <CardContent className="grid gap-6">
         <RadioGroup defaultValue="card" className="grid grid-cols-3 gap-4">
           <div>
-            <RadioGroupItem value="card" id="card" className="peer sr-only" />
+            <RadioGroupItem
+              value="card"
+              id="card"
+              className="peer sr-only"
+              aria-label="Card"
+            />
             <Label
               htmlFor="card"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,20 +62,26 @@ export function DemoPaymentMethod() {
               value="paypal"
               id="paypal"
               className="peer sr-only"
+              aria-label="Paypal"
             />
             <Label
               htmlFor="paypal"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
             >
               <Icons.paypal className="mb-3 h-6 w-6" />
               Paypal
             </Label>
           </div>
           <div>
-            <RadioGroupItem value="apple" id="apple" className="peer sr-only" />
+            <RadioGroupItem
+              value="apple"
+              id="apple"
+              className="peer sr-only"
+              aria-label="Apple"
+            />
             <Label
               htmlFor="apple"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary "
             >
               <Icons.apple className="mb-3 h-6 w-6" />
               Apple
@@ -82,6 +93,10 @@ export function DemoPaymentMethod() {
           <Input id="name" placeholder="First Last" />
         </div>
         <div className="grid gap-2">
+          <Label htmlFor="city">City</Label>
+          <Input id="city" placeholder="" />
+        </div>
+        <div className="grid gap-2">
           <Label htmlFor="number">Card number</Label>
           <Input id="number" placeholder="" />
         </div>
@@ -89,7 +104,7 @@ export function DemoPaymentMethod() {
           <div className="grid gap-2">
             <Label htmlFor="month">Expires</Label>
             <Select>
-              <SelectTrigger id="month">
+              <SelectTrigger id="month" aria-label="Month">
                 <SelectValue placeholder="Month" />
               </SelectTrigger>
               <SelectContent>
@@ -111,7 +126,7 @@ export function DemoPaymentMethod() {
           <div className="grid gap-2">
             <Label htmlFor="year">Year</Label>
             <Select>
-              <SelectTrigger id="year">
+              <SelectTrigger id="year" aria-label="Year">
                 <SelectValue placeholder="Year" />
               </SelectTrigger>
               <SelectContent>

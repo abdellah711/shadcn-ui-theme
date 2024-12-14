@@ -1,87 +1,63 @@
-import { Metadata } from "next";
-import Image from "next/image";
-
-import { cn } from "@/lib/utils";
-
-import { DemoCookieSettings } from "./cookie-settings";
-import { DemoCreateAccount } from "./create-account";
-import { DemoDatePicker } from "./date-picker";
-import { DemoGithub } from "./github-card";
-import { DemoNotifications } from "./notifications";
-import { DemoPaymentMethod } from "./payment-method";
-import { DemoReportAnIssue } from "./report-an-issue";
-import { DemoShareDocument } from "./share-document";
-import { DemoTeamMembers } from "./team-members";
-
-function DemoContainer({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn(
-        "flex items-center justify-center [&>div]:w-full",
-        className
-      )}
-      {...props}
-    />
-  );
-}
+import { CardsActivityGoal } from "./activity-goal";
+import { CardsCalendar } from "./calendar";
+import { CardsChat } from "./chat";
+import { CardsCookieSettings } from "./cookie-settings";
+import { CardsCreateAccount } from "./create-account";
+import { CardsDataTable } from "./data-table";
+import { CardsMetric } from "./metric";
+import { CardsPaymentMethod } from "./payment-method";
+import { CardsReportIssue } from "./report-issue";
+import { CardsShare } from "./share";
+import { CardsStats } from "./stats";
+import { CardsTeamMembers } from "./team-members";
 
 export function CardsExample() {
   return (
-    <>
-      <div className="md:hidden">
-        <Image
-          src="/examples/cards-light.png"
-          width={1280}
-          height={1214}
-          alt="Cards"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/cards-dark.png"
-          width={1280}
-          height={1214}
-          alt="Cards"
-          className="hidden dark:block"
-        />
-      </div>
-      <div className="hidden items-start justify-center gap-6 rounded-lg p-8 md:grid lg:grid-cols-2 xl:grid-cols-3">
-        <div className="col-span-2 grid items-start gap-6 lg:col-span-1">
-          <DemoContainer>
-            <DemoCreateAccount />
-          </DemoContainer>
-          <DemoContainer>
-            <DemoPaymentMethod />
-          </DemoContainer>
+    <div className="md:grids-col-2 grid md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4 p-4">
+      <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
+        <CardsStats />
+        <div className="grid gap-1 sm:grid-cols-[260px_1fr] md:hidden">
+          <CardsCalendar />
+          <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
+            <CardsActivityGoal />
+          </div>
+          <div className="pt-3 sm:col-span-2 xl:pt-4">
+            <CardsMetric />
+          </div>
         </div>
-        <div className="col-span-2 grid items-start gap-6 lg:col-span-1">
-          <DemoContainer>
-            <DemoTeamMembers />
-          </DemoContainer>
-          <DemoContainer>
-            <DemoShareDocument />
-          </DemoContainer>
-          <DemoContainer>
-            <DemoDatePicker />
-          </DemoContainer>
-          <DemoContainer>
-            <DemoNotifications />
-          </DemoContainer>
-        </div>
-        <div className="col-span-2 grid items-start gap-6 lg:col-span-2 lg:grid-cols-2 xl:col-span-1 xl:grid-cols-1">
-          <DemoContainer>
-            <DemoReportAnIssue />
-          </DemoContainer>
-          <DemoContainer>
-            <DemoGithub />
-          </DemoContainer>
-          <DemoContainer>
-            <DemoCookieSettings />
-          </DemoContainer>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+          <div className="space-y-4 xl:space-y-4">
+            <CardsTeamMembers />
+            <CardsCookieSettings />
+            <CardsPaymentMethod />
+          </div>
+          <div className="space-y-4 xl:space-y-4">
+            <CardsChat />
+            <CardsCreateAccount />
+            <div className="hidden xl:block">
+              <CardsReportIssue />
+            </div>
+          </div>
         </div>
       </div>
-    </>
+      <div className="space-y-4 lg:col-span-6 xl:col-span-5 xl:space-y-4">
+        <div className="hidden gap-1 sm:grid-cols-[260px_1fr] md:grid">
+          <CardsCalendar />
+          <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-3">
+            <CardsActivityGoal />
+          </div>
+          <div className="pt-3 sm:col-span-2 xl:pt-3">
+            <CardsMetric />
+          </div>
+        </div>
+        <div className="hidden md:block">
+          <CardsDataTable />
+        </div>
+        <CardsShare />
+        <div className="xl:hidden">
+          <CardsReportIssue />
+        </div>
+      </div>
+    </div>
   );
 }

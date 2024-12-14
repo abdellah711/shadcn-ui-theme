@@ -16,7 +16,7 @@ export default function Home() {
   });
 
   return (
-    <div className="p-12 space-y-5">
+    <div className="md:p-9 space-y-5">
       <h1 className="text-3xl">Shadcn Theme Generator</h1>
       <div className="flex gap-5">
         <ImportThemeButton onImport={setTheme} />
