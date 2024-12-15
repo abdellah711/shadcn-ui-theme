@@ -5,21 +5,26 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { cn } from "@/lib/utils";
 import { ColorValue } from "@/lib/types";
 import { useTheme } from "next-themes";
+import { useThemeState } from "@/stores/use-theme-state";
 
 type Props = {
   colorName: string;
-  colors: ColorValue[];
-  onChange: (color: ColorValue[]) => void;
 };
 
-export default function ColorCard({ colorName, colors, onChange }: Props) {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+export default function ColorCard({ colorName }: Props) {
+  const { theme: mode } = useTheme();
+  const isDark = mode === "dark";
   const valueAttr = isDark ? "darkValue" : "value";
-
+  const color = useThemeState(
+    (state) => state.theme.colors.find((c) => c.name === colorName)!
+  );
+  const onChange = useThemeState((selector) => selector.setColor);
   const contrast =
-    colors.length > 1 &&
-    calculateContrast(colors[0][valueAttr], colors[1]![valueAttr]);
+    color.variables.length > 1 &&
+    calculateContrast(
+      color.variables[0][valueAttr],
+      color.variables[1]![valueAttr]
+    );
   return (
     <div className="bg-muted flex gap-4 p-3 rounded-lg w-fit">
       <div className="flex flex-col justify-center">
@@ -38,20 +43,21 @@ export default function ColorCard({ colorName, colors, onChange }: Props) {
         )}
       </div>
       <div className="flex gap-2">
-        {colors.map((color) => (
-          <Tooltip key={color.name} delayDuration={0}>
+        {color.variables.map((col) => (
+          <Tooltip key={col.name} delayDuration={0}>
             <TooltipTrigger>
               <ColorInput
-                color={color[valueAttr]}
+                color={col[valueAttr]}
                 onChange={(value) => {
-                  onChange(
-                    colors.map((c) =>
-                      c.name === color.name ? { ...c, [valueAttr]: value } : c
-                    )
-                  );
+                  onChange({
+                    ...color,
+                    variables: color.variables.map((c) =>
+                      c.name === col.name ? { ...c, [valueAttr]: value } : c
+                    ),
+                  });
                 }}
               />
-              <TooltipContent>{color.label}</TooltipContent>
+              <TooltipContent>{col.label}</TooltipContent>
             </TooltipTrigger>
           </Tooltip>
         ))}

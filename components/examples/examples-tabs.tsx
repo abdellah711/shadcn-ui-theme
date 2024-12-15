@@ -1,20 +1,18 @@
-import React from "react";
-import { Tabs, TabsContent } from "../ui/tabs";
+import { transformStateToCssVariables } from "@/lib/utils";
+import { useThemeState } from "@/stores/use-theme-state";
 import { TabsList, TabsTrigger } from "@radix-ui/react-tabs";
+import { useTheme } from "next-themes";
+import { Button } from "../ui/button";
+import { Tabs, TabsContent } from "../ui/tabs";
 import { CardsExample } from "./cards";
 import { DashboardExample } from "./dashboard";
-import { Button } from "../ui/button";
-import { transformStateToCssVariables } from "@/lib/utils";
-import { ThemeState } from "@/lib/types";
-import { useTheme } from "next-themes";
 
-type Props = {
-  theme: ThemeState;
-};
+type Props = {};
 
-export default function ExamplesTabs({ theme }: Props) {
+export default function ExamplesTabs({}: Props) {
   const { theme: mode } = useTheme();
   const isDark = mode === "dark";
+  const theme = useThemeState((state) => state.theme);
 
   return (
     <Tabs defaultValue="cards">

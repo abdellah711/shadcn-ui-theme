@@ -10,15 +10,23 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { CopyIcon } from "lucide-react";
+import { useThemeState } from "@/stores/use-theme-state";
+import { useState } from "react";
 
-type Props = {
-  theme: ThemeState;
-};
+type Props = {};
 
-export default function CopyCodeButton({ theme }: Props) {
+export default function CopyCodeButton({}: Props) {
+  const theme = useThemeState((state) => state.theme);
+  const [copied, setCopied] = useState(false);
+
   const code = getThemeCode(theme);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+    setCopied(true);
+  };
   return (
-    <Dialog>
+    <Dialog onOpenChange={() => setCopied(false)}>
       <DialogTrigger asChild>
         <Button>copy code</Button>
       </DialogTrigger>
@@ -37,10 +45,10 @@ export default function CopyCodeButton({ theme }: Props) {
             className="absolute top-3 right-5 uppercase bg-accent text-accent-foreground"
             size="sm"
             variant="ghost"
-            onClick={() => navigator.clipboard.writeText(code)}
+            onClick={handleCopy}
           >
             <CopyIcon />
-            copy
+            {copied ? "Copied!" : "Copy"}
           </Button>
         </div>
       </DialogContent>

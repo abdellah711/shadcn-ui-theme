@@ -1,14 +1,14 @@
 import React from "react";
 import { Button } from "./ui/button";
+import { useThemeState } from "@/stores/use-theme-state";
 
-type Props = {
-  radius: number;
-  onChange: (value: number) => void;
-};
+type Props = {};
 
 const RADIUS_VALUES = [0, 0.3, 0.5, 0.7, 1, 1.5];
 
-export default function RadiusField({ radius, onChange }: Props) {
+export default function RadiusField({}: Props) {
+  const radius = useThemeState((selector) => selector.theme.radius);
+  const onChange = useThemeState((selector) => selector.setRadius);
   return (
     <div className="flex flex-col gap-1.5">
       <p className="text-sm">Radius</p>
