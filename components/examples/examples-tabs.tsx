@@ -6,16 +6,36 @@ import { Button } from "../ui/button";
 import { Tabs, TabsContent } from "../ui/tabs";
 import { CardsExample } from "./cards";
 import { DashboardExample } from "./dashboard";
+import { SidebarExample } from "./sidebar";
+import { useSelectedTab } from "@/stores/use-selected-tab";
 
-type Props = {};
+export const TABS = [
+  {
+    value: "cards",
+    label: "Cards",
+    component: CardsExample,
+  },
+  {
+    value: "dashboard",
+    label: "Dashboard",
+    component: DashboardExample,
+  },
+  {
+    value: "sidebar",
+    label: "Sidebar",
+    component: SidebarExample,
+  },
+] as const;
 
-export default function ExamplesTabs({}: Props) {
+export type Tab = (typeof TABS)[number]["value"];
+
+export default function ExamplesTabs() {
   const { theme: mode } = useTheme();
   const isDark = mode === "dark";
   const theme = useThemeState((state) => state.theme);
-
+  const { selectedTab, setSelectedTab } = useSelectedTab();
   return (
-    <Tabs defaultValue="cards">
+    <Tabs value={selectedTab} onValueChange={setSelectedTab}>
       <TabsList className="py-3">
         <TabsTrigger value="dashboard" asChild>
           <Button
@@ -33,17 +53,28 @@ export default function ExamplesTabs({}: Props) {
             Cards
           </Button>
         </TabsTrigger>
+        <TabsTrigger value="sidebar" asChild>
+          <Button
+            variant="ghost"
+            className="text-muted-foreground data-[state=active]:text-primary data-[state=active]:font-semibold"
+          >
+            Sidebar
+          </Button>
+        </TabsTrigger>
       </TabsList>
 
       <div
         style={Object.fromEntries(transformStateToCssVariables(theme, isDark))}
-        className="bg-background border border-border rounded-md origin-top"
+        className="bg-background border border-border rounded-md origin-top relative overflow-hidden"
       >
         <TabsContent value="cards">
           <CardsExample />
         </TabsContent>
         <TabsContent value="dashboard">
           <DashboardExample />
+        </TabsContent>
+        <TabsContent value="sidebar">
+          <SidebarExample />
         </TabsContent>
       </div>
     </Tabs>

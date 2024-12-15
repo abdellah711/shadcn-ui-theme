@@ -28,7 +28,9 @@ export default function ColorCard({ colorName }: Props) {
   return (
     <div className="bg-muted flex gap-4 p-3 rounded-lg w-fit">
       <div className="flex flex-col justify-center">
-        <p className="font-semibold mb-1">{colorName}</p>
+        <p className="font-semibold mb-1">
+          {colorName.replace("sidebar-", "")}
+        </p>
         {contrast && (
           <p
             className={cn("text-xs", {

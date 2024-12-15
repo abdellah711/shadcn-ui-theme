@@ -11,7 +11,7 @@ export default function RadiusField({}: Props) {
   const onChange = useThemeState((selector) => selector.setRadius);
   return (
     <div className="flex flex-col gap-1.5">
-      <p className="text-sm">Radius</p>
+      <p className="text-sm font-medium">Radius</p>
       <div className="flex gap-2">
         {RADIUS_VALUES.map((value) => (
           <Button

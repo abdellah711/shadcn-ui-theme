@@ -169,6 +169,79 @@ export const initialColors: Color[] = [
       },
     ],
   },
+  {
+    name: "sidebar-background",
+    variables: [
+      {
+        name: "sidebar-background",
+        value: "#f1f1f1", // sidebar-background: hsl(0, 0%, 98%)
+        darkValue: "#3d3d56", // sidebar-background in dark mode: hsl(240, 5.3%, 26.1%)
+        label: "sidebar background",
+      },
+      {
+        name: "sidebar-foreground",
+        value: "#3d3d56", // sidebar-foreground: hsl(240, 5.3%, 26.1%)
+        darkValue: "#f1f1f1", // sidebar-foreground in dark mode: hsl(0, 0%, 98%)
+        label: "sidebar foreground",
+      },
+    ],
+  },
+  {
+    name: "sidebar-primary",
+    variables: [
+      {
+        name: "sidebar-primary",
+        value: "#2c2c3d", // sidebar-primary: hsl(240, 5.9%, 10%)
+        darkValue: "#f1f1f1", // sidebar-primary in dark mode: hsl(0, 0%, 98%)
+        label: "sidebar primary",
+      },
+      {
+        name: "sidebar-primary-foreground",
+        value: "#f1f1f1", // sidebar-primary-foreground: hsl(0, 0%, 98%)
+        darkValue: "#2c2c3d", // sidebar-primary-foreground in dark mode: hsl(240, 5.9%, 10%)
+        label: "sidebar primary foreground",
+      },
+    ],
+  },
+  {
+    name: "sidebar-accent",
+    variables: [
+      {
+        name: "sidebar-accent",
+        value: "#e1e1f1", // sidebar-accent: hsl(240, 4.8%, 95.9%)
+        darkValue: "#2c2c3d", // sidebar-accent in dark mode: hsl(240, 5.9%, 10%)
+        label: "sidebar accent",
+      },
+      {
+        name: "sidebar-accent-foreground",
+        value: "#2c2c3d", // sidebar-accent-foreground: hsl(240, 5.9%, 10%)
+        darkValue: "#f1f1f1", // sidebar-accent-foreground in dark mode: hsl(0, 0%, 98%)
+        label: "sidebar accent foreground",
+      },
+    ],
+  },
+  {
+    name: "sidebar-border",
+    variables: [
+      {
+        name: "sidebar-border",
+        value: "#d1d1d8", // sidebar-border: hsl(220, 13%, 91%)
+        darkValue: "#d1d1d8", // sidebar-border in dark mode: hsl(220, 13%, 91%)
+        label: "sidebar border",
+      },
+    ],
+  },
+  {
+    name: "sidebar-ring",
+    variables: [
+      {
+        name: "sidebar-ring",
+        value: "#a4d0e1", // sidebar-ring: hsl(217.2, 91.2%, 59.8%)
+        darkValue: "#a4d0e1", // sidebar-ring in dark mode: hsl(217.2, 91.2%, 59.8%)
+        label: "sidebar ring",
+      },
+    ],
+  },
 ];
 
 export const COLORS_VARIABLES = [
@@ -191,4 +264,12 @@ export const COLORS_VARIABLES = [
   "input",
   "border",
   "ring",
+  "sidebar-background",
+  "sidebar-foreground",
+  "sidebar-primary",
+  "sidebar-primary-foreground",
+  "sidebar-accent",
+  "sidebar-accent-foreground",
+  "sidebar-border",
+  "sidebar-ring",
 ];
