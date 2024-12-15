@@ -1,33 +1,32 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { Content, PopoverProps, Portal } from "@radix-ui/react-popover";
+import { Chrome } from "@uiw/react-color";
+import { Popover, PopoverTrigger } from "./ui/popover";
 
 type Props = {
   color: string;
   onChange: (color: string) => void;
-} & Omit<React.HTMLAttributes<HTMLLabelElement>, "onChange">;
+} & PopoverProps;
 
-export default function ColorInput({
-  color,
-  onChange,
-  className,
-  ...props
-}: Props) {
+export default function ColorInput({ color, onChange, ...props }: Props) {
   return (
-    <label
-      className={cn("flex border size-11 rounded-lg cursor-pointer", className)}
-      style={{
-        background: color,
-        borderColor: `color-mix(in srgb, ${color}, #7f7f7f)`,
-      }}
-      {...props}
-    >
-      <input
-        type="color"
-        value={color}
-        onChange={(e) => onChange(e.target.value)}
-        className="size-full opacity-0 pointer-events-none"
-      />
-    </label>
+    <Popover {...props}>
+      <PopoverTrigger
+        className="flex border size-11 rounded-lg cursor-pointer"
+        style={{
+          background: color,
+          borderColor: `color-mix(in srgb, ${color}, #7f7f7f)`,
+        }}
+      ></PopoverTrigger>
+      <Portal>
+        <Content
+          align="start"
+          className="mt-1.5 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2"
+        >
+          <Chrome color={color} onChange={(color) => onChange(color.hex)} />
+        </Content>
+      </Portal>
+    </Popover>
   );
 }
