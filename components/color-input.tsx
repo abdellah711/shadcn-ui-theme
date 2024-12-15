@@ -3,6 +3,7 @@
 import { Content, PopoverProps, Portal } from "@radix-ui/react-popover";
 import { Chrome } from "@uiw/react-color";
 import { Popover, PopoverTrigger } from "./ui/popover";
+import { TooltipTrigger } from "./ui/tooltip";
 
 type Props = {
   color: string;
@@ -12,13 +13,15 @@ type Props = {
 export default function ColorInput({ color, onChange, ...props }: Props) {
   return (
     <Popover {...props}>
-      <PopoverTrigger
-        className="flex border size-11 rounded-lg cursor-pointer"
-        style={{
-          background: color,
-          borderColor: `color-mix(in srgb, ${color}, #7f7f7f)`,
-        }}
-      ></PopoverTrigger>
+      <TooltipTrigger asChild>
+        <PopoverTrigger
+          className="flex border size-11 rounded-lg cursor-pointer"
+          style={{
+            background: color,
+            borderColor: `color-mix(in srgb, ${color}, #7f7f7f)`,
+          }}
+        />
+      </TooltipTrigger>
       <Portal>
         <Content
           align="start"

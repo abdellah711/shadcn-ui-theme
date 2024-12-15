@@ -45,20 +45,18 @@ export default function ColorCard({ colorName }: Props) {
       <div className="flex gap-2">
         {color.variables.map((col) => (
           <Tooltip key={col.name} delayDuration={0}>
-            <TooltipTrigger>
-              <ColorInput
-                color={col[valueAttr]}
-                onChange={(value) => {
-                  onChange({
-                    ...color,
-                    variables: color.variables.map((c) =>
-                      c.name === col.name ? { ...c, [valueAttr]: value } : c
-                    ),
-                  });
-                }}
-              />
-              <TooltipContent>{col.label}</TooltipContent>
-            </TooltipTrigger>
+            <ColorInput
+              color={col[valueAttr]}
+              onChange={(value) => {
+                onChange({
+                  ...color,
+                  variables: color.variables.map((c) =>
+                    c.name === col.name ? { ...c, [valueAttr]: value } : c
+                  ),
+                });
+              }}
+            />
+            <TooltipContent>{col.label}</TooltipContent>
           </Tooltip>
         ))}
       </div>
