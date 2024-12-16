@@ -3,8 +3,14 @@ import { calculateContrast } from "@/lib/colors";
 import { cn } from "@/lib/utils";
 import { useThemeState } from "@/stores/use-theme-state";
 import { useTheme } from "next-themes";
-import ColorInput from "./color-input";
 import { Tooltip, TooltipContent } from "./ui/tooltip";
+import dynamic from "next/dynamic";
+import { Skeleton } from "./ui/skeleton";
+
+const ColorInput = dynamic(() => import("./color-input"), {
+  ssr: false,
+  loading: () => <Skeleton className="size-11 rounded-lg" />,
+});
 
 type Props = {
   colorName: string;
@@ -27,7 +33,7 @@ export default function ColorCard({ colorName }: Props) {
   return (
     <div className="bg-muted flex gap-4 p-3 rounded-lg w-full">
       <div className="flex flex-col justify-center">
-        <p className="font-semibold mb-1">
+        <p className="font-semibold mb-1 text-sm capitalize">
           {colorName.replace("sidebar-", "")}
         </p>
         {contrast && (

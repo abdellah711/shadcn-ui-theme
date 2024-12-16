@@ -7,11 +7,11 @@ export default function Navbar() {
   return (
     <header className="px-5 py-3 flex gap-3 items-center border-b ">
       <a
-        className="font-medium flex items-center gap-2 me-auto"
+        className="font-semibold flex items-center gap-2 me-auto"
         href="https://github.com/shadcn/ui"
       >
         <Icons.logo className="size-4" />
-        shadch/ui themes
+        shadch/ui theme
       </a>
 
       <ThemeToggle />
