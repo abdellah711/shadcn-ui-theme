@@ -12,6 +12,7 @@ import {
 import { Check, CheckIcon, CopyIcon } from "lucide-react";
 import { useThemeState } from "@/stores/use-theme-state";
 import { useState } from "react";
+import { ScrollArea } from "./ui/scroll-area";
 
 type Props = {};
 
@@ -39,9 +40,11 @@ export default function CopyCodeButton({}: Props) {
           </DialogDescription>
         </DialogHeader>
         <div className="relative rounded-xl overflow-hidden">
-          <pre className="relative bg-zinc-900 rounded-xl p-4 text-white max-h-[400px] overflow-y-scroll">
-            <code className="font-mono">{code}</code>
-          </pre>
+          <ScrollArea className="bg-zinc-900 rounded-xl text-white h-[400px]">
+            <pre className="p-4">
+              <code className="font-mono">{code}</code>
+            </pre>
+          </ScrollArea>
           <Button
             className="absolute top-3 right-5 bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground"
             size="sm"
