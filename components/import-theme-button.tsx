@@ -12,14 +12,12 @@ import { useState } from "react";
 import { COLORS_VARIABLES, initialColors } from "@/lib/constants";
 import { hslToHex } from "@/lib/colors";
 import toast from "react-hot-toast";
+import { useThemeState } from "@/stores/use-theme-state";
 
-type Props = {
-  onImport?: (theme: ThemeState) => void;
-};
-
-export default function ImportThemeButton({ onImport }: Props) {
+export default function ImportThemeButton() {
   const [input, setInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const setTheme = useThemeState((selector) => selector.setTheme);
 
   const handleImport = () => {
     const rootContent = input.match(/\:root\s*{([^\}]*|\n*)}/)?.[1]?.trim();
@@ -84,7 +82,7 @@ export default function ImportThemeButton({ onImport }: Props) {
       });
     });
 
-    onImport?.(theme);
+    setTheme(theme);
     setIsOpen(false);
 
     if (missingColors.light.length) {

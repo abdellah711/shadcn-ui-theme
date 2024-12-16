@@ -1,11 +1,10 @@
 "use client";
 import { calculateContrast } from "@/lib/colors";
-import ColorInput from "./color-input";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { cn } from "@/lib/utils";
-import { ColorValue } from "@/lib/types";
-import { useTheme } from "next-themes";
 import { useThemeState } from "@/stores/use-theme-state";
+import { useTheme } from "next-themes";
+import ColorInput from "./color-input";
+import { Tooltip, TooltipContent } from "./ui/tooltip";
 
 type Props = {
   colorName: string;
@@ -26,7 +25,7 @@ export default function ColorCard({ colorName }: Props) {
       color.variables[1]![valueAttr]
     );
   return (
-    <div className="bg-muted flex gap-4 p-3 rounded-lg w-fit">
+    <div className="bg-muted flex gap-4 p-3 rounded-lg w-full">
       <div className="flex flex-col justify-center">
         <p className="font-semibold mb-1">
           {colorName.replace("sidebar-", "")}
@@ -44,7 +43,7 @@ export default function ColorCard({ colorName }: Props) {
           </p>
         )}
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 ms-auto">
         {color.variables.map((col) => (
           <Tooltip key={col.name} delayDuration={0}>
             <ColorInput

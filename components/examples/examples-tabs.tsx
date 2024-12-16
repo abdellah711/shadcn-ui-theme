@@ -7,18 +7,17 @@ import { Tabs, TabsContent } from "../ui/tabs";
 import { CardsExample } from "./cards";
 import { DashboardExample } from "./dashboard";
 import { SidebarExample } from "./sidebar";
-import { useSelectedTab } from "@/stores/use-selected-tab";
 
 export const TABS = [
-  {
-    value: "cards",
-    label: "Cards",
-    component: CardsExample,
-  },
   {
     value: "dashboard",
     label: "Dashboard",
     component: DashboardExample,
+  },
+  {
+    value: "cards",
+    label: "Cards",
+    component: CardsExample,
   },
   {
     value: "sidebar",
@@ -33,49 +32,30 @@ export default function ExamplesTabs() {
   const { theme: mode } = useTheme();
   const isDark = mode === "dark";
   const theme = useThemeState((state) => state.theme);
-  const { selectedTab, setSelectedTab } = useSelectedTab();
   return (
-    <Tabs value={selectedTab} onValueChange={setSelectedTab}>
+    <Tabs className="w-full p-5 max-w-7xl mx-auto" defaultValue="dashboard">
       <TabsList className="py-3">
-        <TabsTrigger value="dashboard" asChild>
-          <Button
-            variant="ghost"
-            className="text-muted-foreground data-[state=active]:text-primary data-[state=active]:font-semibold"
-          >
-            Dashboard
-          </Button>
-        </TabsTrigger>
-        <TabsTrigger value="cards" asChild>
-          <Button
-            variant="ghost"
-            className="text-muted-foreground data-[state=active]:text-primary data-[state=active]:font-semibold"
-          >
-            Cards
-          </Button>
-        </TabsTrigger>
-        <TabsTrigger value="sidebar" asChild>
-          <Button
-            variant="ghost"
-            className="text-muted-foreground data-[state=active]:text-primary data-[state=active]:font-semibold"
-          >
-            Sidebar
-          </Button>
-        </TabsTrigger>
+        {TABS.map((tab) => (
+          <TabsTrigger key={tab.value} value={tab.value} asChild>
+            <Button
+              variant="ghost"
+              className="text-muted-foreground data-[state=active]:text-primary data-[state=active]:font-semibold"
+            >
+              {tab.label}
+            </Button>
+          </TabsTrigger>
+        ))}
       </TabsList>
 
       <div
         style={Object.fromEntries(transformStateToCssVariables(theme, isDark))}
         className="bg-background border border-border rounded-md origin-top relative overflow-hidden"
       >
-        <TabsContent value="cards">
-          <CardsExample />
-        </TabsContent>
-        <TabsContent value="dashboard">
-          <DashboardExample />
-        </TabsContent>
-        <TabsContent value="sidebar">
-          <SidebarExample />
-        </TabsContent>
+        {TABS.map((tab) => (
+          <TabsContent key={tab.value} value={tab.value}>
+            <tab.component />
+          </TabsContent>
+        ))}
       </div>
     </Tabs>
   );

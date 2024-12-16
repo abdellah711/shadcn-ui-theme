@@ -11,14 +11,14 @@ export default function RadiusField({}: Props) {
   const onChange = useThemeState((selector) => selector.setRadius);
   return (
     <div className="flex flex-col gap-1.5">
-      <p className="text-sm font-medium">Radius</p>
-      <div className="flex gap-2">
+      <p className="text-sm font-medium text-muted-foreground">Radius</p>
+      <div className="flex gap-2 flex-wrap">
         {RADIUS_VALUES.map((value) => (
           <Button
             key={value}
             variant="outline"
             size="sm"
-            className="cursor-pointer rounded-full bg-card has-[input:checked]:bg-accent has-[input:checked]:border-primary has-[input:checked]:text-accent-foreground has-[input:checked]:border-2"
+            className="cursor-pointer rounded-md bg-card has-[input:checked]:bg-accent has-[input:checked]:border-primary has-[input:checked]:text-accent-foreground has-[input:checked]:border-2"
             asChild
           >
             <label>

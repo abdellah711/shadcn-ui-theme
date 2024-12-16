@@ -5,6 +5,7 @@ import { create } from "zustand";
 export type State = {
   theme: ThemeState;
   setColors: (colors: Color[]) => void;
+  setTheme: (theme: ThemeState) => void;
   setColor: (color: Color) => void;
   setRadius: (radius: number) => void;
 };
@@ -16,6 +17,7 @@ export const useThemeState = create<State>((set) => ({
   },
   setColors: (colors) =>
     set((state) => ({ theme: { ...state.theme, colors } })),
+  setTheme: (theme) => set({ theme }),
   setColor: (color) =>
     set((state) => ({
       theme: {

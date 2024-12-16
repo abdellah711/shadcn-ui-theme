@@ -26,23 +26,7 @@ export const metadata: Metadata = {
 export function DashboardExample() {
   return (
     <>
-      <div className="md:hidden">
-        <Image
-          src="/examples/dashboard-light.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/dashboard-dark.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="hidden dark:block"
-        />
-      </div>
-      <div className="hidden flex-col md:flex">
+      <div className="flex-col flex">
         <div className="border-b">
           <div className="flex h-16 items-center px-4">
             <TeamSwitcher />
@@ -75,7 +59,7 @@ export function DashboardExample() {
               </TabsTrigger>
             </TabsList>
             <TabsContent value="overview" className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
@@ -178,7 +162,7 @@ export function DashboardExample() {
                   </CardContent>
                 </Card>
               </div>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-7">
                 <Card className="col-span-4">
                   <CardHeader>
                     <CardTitle>Overview</CardTitle>

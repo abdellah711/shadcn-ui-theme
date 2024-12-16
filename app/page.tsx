@@ -1,24 +1,16 @@
 "use client";
-import ColorControls from "@/components/color-controls";
-import CopyCodeButton from "@/components/copy-code-button";
 import ExamplesTabs from "@/components/examples/examples-tabs";
-import ImportThemeButton from "@/components/import-theme-button";
-import RadiusField from "@/components/radius-field";
-import { ThemeToggle } from "@/components/theme-toggle";
+import ThemeSidebar from "@/components/theme-sidebar";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   return (
-    <div className="md:p-9 space-y-5">
-      <h1 className="text-3xl">Shadcn Theme Generator</h1>
-      <div className="flex gap-5">
-        <ImportThemeButton />
-        <CopyCodeButton />
-      </div>
-      <div className="flex items-end gap-10">
-        <RadiusField />
-        <ThemeToggle />
-      </div>
-      <ColorControls />
+    <div className="flex">
+      <ThemeSidebar />
+      <Separator
+        orientation="vertical"
+        className="self-stretch min-h-screen 2xl:mx-3"
+      />
       <ExamplesTabs />
     </div>
   );

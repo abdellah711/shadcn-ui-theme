@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
-import { CopyIcon } from "lucide-react";
+import { Check, CheckIcon, CopyIcon } from "lucide-react";
 import { useThemeState } from "@/stores/use-theme-state";
 import { useState } from "react";
 
@@ -24,13 +24,14 @@ export default function CopyCodeButton({}: Props) {
   const handleCopy = () => {
     navigator.clipboard.writeText(code);
     setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
   return (
     <Dialog onOpenChange={() => setCopied(false)}>
       <DialogTrigger asChild>
         <Button>copy code</Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>Your theme</DialogTitle>
           <DialogDescription>
@@ -38,16 +39,16 @@ export default function CopyCodeButton({}: Props) {
           </DialogDescription>
         </DialogHeader>
         <div className="relative rounded-xl overflow-hidden">
-          <pre className="relative bg-zinc-800 rounded-xl p-4 text-gray-100 max-h-[400px] overflow-y-scroll">
-            <code>{code}</code>
+          <pre className="relative bg-zinc-900 rounded-xl p-4 text-white max-h-[400px] overflow-y-scroll">
+            <code className="font-mono">{code}</code>
           </pre>
           <Button
-            className="absolute top-3 right-5 uppercase bg-accent text-accent-foreground"
+            className="absolute top-3 right-5 bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground"
             size="sm"
             variant="ghost"
             onClick={handleCopy}
           >
-            <CopyIcon />
+            {copied ? <CheckIcon /> : <CopyIcon />}
             {copied ? "Copied!" : "Copy"}
           </Button>
         </div>
