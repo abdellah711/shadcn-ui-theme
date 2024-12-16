@@ -111,7 +111,7 @@ export default function ImportThemeButton() {
           </DialogDescription>
         </DialogHeader>
         <textarea
-          className="h-60 bg-zinc-800 rounded-lg p-4 text-gray-100 max-h-[40vh]"
+          className="h-60 bg-zinc-900 rounded-lg p-4 text-gray-100 max-h-[40vh]"
           placeholder="Paste your theme here"
           value={input}
           onChange={(e) => setInput(e.target.value)}

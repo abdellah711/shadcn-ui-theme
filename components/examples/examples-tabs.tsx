@@ -1,3 +1,4 @@
+"use client";
 import { transformStateToCssVariables } from "@/lib/utils";
 import { useThemeState } from "@/stores/use-theme-state";
 import { TabsList, TabsTrigger } from "@radix-ui/react-tabs";

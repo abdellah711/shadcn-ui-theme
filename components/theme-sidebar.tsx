@@ -1,3 +1,4 @@
+"use client";
 import ColorControls from "./color-controls";
 import CopyCodeButton from "./copy-code-button";
 import ImportThemeButton from "./import-theme-button";
