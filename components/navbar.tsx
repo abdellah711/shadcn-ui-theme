@@ -16,7 +16,10 @@ export default function Navbar() {
 
       <ThemeToggle />
       <Button asChild variant="ghost" size="icon">
-        <a href="https://github.com/abdellah711/shadcn-ui-theme">
+        <a
+          href="https://github.com/abdellah711/shadcn-ui-theme"
+          aria-label="GitHub"
+        >
           <Icons.gitHub />
         </a>
       </Button>

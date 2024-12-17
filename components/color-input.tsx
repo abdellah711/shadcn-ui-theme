@@ -20,6 +20,7 @@ export default function ColorInput({ color, onChange, ...props }: Props) {
             background: color,
             borderColor: `color-mix(in srgb, ${color}, #7f7f7f)`,
           }}
+          aria-label="Pick a color"
         />
       </TooltipTrigger>
       <Portal>
