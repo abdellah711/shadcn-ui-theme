@@ -1,4 +1,5 @@
 "use client";
+import { useMounted } from "@/hooks/use-mounted";
 import { transformStateToCssVariables } from "@/lib/utils";
 import { useThemeState } from "@/stores/use-theme-state";
 import { TabsList, TabsTrigger } from "@radix-ui/react-tabs";
@@ -33,6 +34,7 @@ export default function ExamplesTabs() {
   const { theme: mode } = useTheme();
   const isDark = mode === "dark";
   const theme = useThemeState((state) => state.theme);
+  const isMounted = useMounted();
   return (
     <Tabs className="w-full p-5 max-w-7xl mx-auto" defaultValue="dashboard">
       <TabsList className="py-3">
@@ -49,7 +51,11 @@ export default function ExamplesTabs() {
       </TabsList>
 
       <div
-        style={Object.fromEntries(transformStateToCssVariables(theme, isDark))}
+        style={
+          isMounted
+            ? Object.fromEntries(transformStateToCssVariables(theme, isDark))
+            : {}
+        }
         className="bg-background border border-border rounded-md origin-top relative overflow-hidden"
       >
         {TABS.map((tab) => (

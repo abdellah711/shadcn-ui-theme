@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import { Tooltip, TooltipContent } from "./ui/tooltip";
 import dynamic from "next/dynamic";
 import { Skeleton } from "./ui/skeleton";
+import { useMounted } from "@/hooks/use-mounted";
 
 const ColorInput = dynamic(() => import("./color-input"), {
   ssr: false,
@@ -24,7 +25,10 @@ export default function ColorCard({ colorName }: Props) {
     (state) => state.theme.colors.find((c) => c.name === colorName)!
   );
   const onChange = useThemeState((selector) => selector.setColor);
+  const isMounted = useMounted();
+
   const contrast =
+    isMounted &&
     color.variables.length > 1 &&
     calculateContrast(
       color.variables[0][valueAttr],
